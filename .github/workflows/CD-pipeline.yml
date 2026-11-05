@@ -1,8 +1,10 @@
 name: CD pipeline
 on:
-  push:
-    branches:
-      - main
+  workflow_run:
+    workflows: ["CI"]
+    types:
+      - completed
+  
 jobs:
   Deploy:
     runs-on: self-hosted
